@@ -1,0 +1,353 @@
+/* Template 5: Physical - Traditional Paper Invoice */
+
+.template-physical {
+    background: #ffffff;
+    border: 2px solid #000;
+    position: relative;
+}
+
+.top-border-line {
+    width: 100%;
+    height: 4px;
+    background: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding-top: 30px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 25px;
+}
+
+.header-left-section {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+}
+
+.logo-section {
+    flex-shrink: 0;
+}
+
+.logo {
+    max-width: 150px;
+    max-height: 70px;
+    object-fit: contain;
+}
+
+.company-header {
+    flex: 1;
+}
+
+.company-name {
+    font-size: 20pt;
+    font-weight: 900;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.company-details {
+    font-size: 10pt;
+    color: #333;
+    line-height: 1.6;
+}
+
+.header-right-section {
+    text-align: right;
+    border: 2px solid #000;
+    padding: 20px;
+    background: #f9f9f9;
+    min-width: 250px;
+}
+
+.invoice-title-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.invoice-title {
+    font-size: 24pt;
+    font-weight: 900;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 3px solid #000;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.invoice-number,
+.invoice-date,
+.invoice-due {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10pt;
+    font-weight: 600;
+}
+
+.label {
+    color: #666;
+    font-weight: 500;
+}
+
+.section-divider {
+    width: 100%;
+    height: 2px;
+    background: #000;
+    margin: 30px 0;
+}
+
+/* Customer Section */
+.customer-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+}
+
+.section-label {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.customer-details {
+    font-size: 11pt;
+    color: #333;
+    line-height: 1.8;
+}
+
+.customer-name-right {
+    font-weight: 700;
+    font-size: 13pt;
+    color: #000;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.customer-address-right,
+.customer-phone-right {
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Items Table */
+.items-section {
+    margin-bottom: 40px;
+}
+
+.items-table-physical {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #000;
+}
+
+.items-table-physical thead {
+    background: #000;
+    color: white;
+}
+
+.items-table-physical th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 10pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-right: 1px solid #333;
+}
+
+.items-table-physical th:last-child {
+    border-right: none;
+}
+
+.items-table-physical th.th-qty,
+.items-table-physical th.th-price,
+.items-table-physical th.th-total {
+    text-align: right;
+}
+
+.items-table-physical tbody tr {
+    border-bottom: 1px solid #ccc;
+}
+
+.items-table-physical tbody tr:last-child {
+    border-bottom: none;
+}
+
+.items-table-physical td {
+    padding: 14px 15px;
+    font-size: 10pt;
+    color: #333;
+    border-right: 1px solid #e5e5e5;
+}
+
+.items-table-physical td:last-child {
+    border-right: none;
+}
+
+.items-table-physical td.col-desc {
+    font-weight: 600;
+    color: #000;
+}
+
+.items-table-physical td.col-qty,
+.items-table-physical td.col-price,
+.items-table-physical td.col-total {
+    text-align: right;
+    font-weight: 600;
+}
+
+.items-table-physical td.col-total {
+    color: #000;
+    font-weight: 700;
+}
+
+/* Totals Section */
+.totals-section {
+    margin-bottom: 40px;
+}
+
+.totals-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.notes-area {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+}
+
+.notes-label {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 6px;
+}
+
+.notes-content {
+    font-size: 10pt;
+    color: #555;
+    line-height: 1.6;
+    white-space: pre-line;
+}
+
+.totals-area {
+    width: 350px;
+    flex-shrink: 0;
+}
+
+.totals-table-physical {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #000;
+    background: white;
+}
+
+.totals-table-physical td {
+    padding: 12px 20px;
+    font-size: 11pt;
+    border-bottom: 1px solid #ccc;
+}
+
+.totals-table-physical tr:last-child td {
+    border-bottom: none;
+}
+
+.label-cell {
+    text-align: right;
+    font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: 60%;
+    border-right: 2px solid #000;
+}
+
+.value-cell {
+    text-align: right;
+    font-weight: 700;
+    color: #000;
+    font-size: 12pt;
+    width: 40%;
+}
+
+.grand-total-row .label-cell,
+.grand-total-row .value-cell {
+    background: #000;
+    color: white;
+    font-size: 14pt;
+    font-weight: 900;
+    padding: 16px 20px;
+}
+
+/* Footer */
+.invoice-footer {
+    margin-top: 50px;
+}
+
+.footer-divider {
+    width: 100%;
+    height: 2px;
+    background: #000;
+    margin-bottom: 25px;
+}
+
+.footer-content-physical {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+}
+
+.footer-logo-img {
+    height: 45px;
+    object-fit: contain;
+}
+
+.footer-text {
+    font-size: 9pt;
+    color: #333;
+    line-height: 1.6;
+    flex: 1;
+}
+
+.footer-text strong {
+    color: #000;
+    font-weight: 700;
+}
+
+.text-logo {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 20pt;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-content-physical .text-logo {
+    font-size: 14pt;
+}
+

@@ -1,0 +1,114 @@
+<!-- Template 5: Physical - Traditional Paper Invoice -->
+<div id="invoicePreview" class="invoice-paper template-physical">
+    <!-- Top Border Line -->
+    <div class="top-border-line"></div>
+    
+    <!-- Header -->
+    <header class="invoice-header">
+        <div class="header-left-section">
+            <div class="logo-section">
+                <img src="logo.png" alt="Company Logo" class="logo">
+            </div>
+            <div class="company-header">
+                <div class="company-name">INVIOLITE</div>
+                <div class="company-details">
+                    <div>Company Address Line 1</div>
+                    <div>City / State</div>
+                    <div>info@imgera.com</div>
+                    <div>+1 555 000 0000</div>
+                </div>
+            </div>
+        </div>
+        <div class="header-right-section">
+            <div class="invoice-title-box">
+                <div class="invoice-title" id="previewDocTypeDisplay">INVOICE</div>
+                <div class="invoice-number">
+                    <span class="label">No:</span>
+                    <span id="previewNumberDisplay">FAT-001</span>
+                </div>
+                <div class="invoice-date">
+                    <span class="label">Date:</span>
+                    <span id="previewDate">24.11.2025</span>
+                </div>
+                <div class="invoice-due">
+                    <span class="label">Due:</span>
+                    <span id="previewExpiryInline">24.12.2025</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Divider Line -->
+    <div class="section-divider"></div>
+
+    <!-- Customer Section -->
+    <section class="customer-section">
+        <div class="section-label" data-translate="invoice.to">Bill To:</div>
+        <div class="customer-details">
+            <div id="previewCustomerName" class="customer-name-right"></div>
+            <div id="previewCustomerAddress" class="customer-address-right"></div>
+            <div id="previewCustomerPhone" class="customer-phone-right"></div>
+        </div>
+    </section>
+
+    <!-- Items Table -->
+    <section class="invoice-section items-section">
+        <table class="items-table-physical">
+            <thead>
+                <tr>
+                    <th class="th-desc" data-translate="invoice.serviceProduct">Description</th>
+                    <th class="th-qty" data-translate="invoice.quantity">Qty</th>
+                    <th class="th-price" data-translate="invoice.listPrice">Unit Price</th>
+                    <th class="th-total" data-translate="invoice.total">Total</th>
+                </tr>
+            </thead>
+            <tbody id="previewItemsBody">
+                <!-- Rows injected here -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Totals Section -->
+    <section class="invoice-section totals-section">
+        <div class="totals-layout">
+            <div class="notes-area">
+                <div class="notes-label">Terms & Notes</div>
+                <div id="previewNotes" class="notes-content"></div>
+            </div>
+            <div class="totals-area">
+                <table class="totals-table-physical">
+                    <tr>
+                        <td class="label-cell" data-translate="invoice.subtotal">Subtotal:</td>
+                        <td class="value-cell" id="previewSubtotal">₺15.000</td>
+                    </tr>
+                    <tr id="discountRow" style="display: none;">
+                        <td class="label-cell" data-translate="invoice.discount">Discount:</td>
+                        <td class="value-cell" id="previewDiscount">₺0</td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell" id="taxLabel" data-translate="invoice.tax" data-params='{"rate": "20"}'>Tax:</td>
+                        <td class="value-cell" id="previewTax">₺3.000</td>
+                    </tr>
+                    <tr class="grand-total-row">
+                        <td class="label-cell" data-translate="invoice.grandTotal">TOTAL:</td>
+                        <td class="value-cell" id="previewTotal">₺18.000</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="invoice-footer">
+        <div class="footer-divider"></div>
+        <div class="footer-content-physical">
+            <div class="footer-logo">
+                <img src="logo.png" alt="Company Logo" class="footer-logo-img">
+            </div>
+            <div class="footer-text">
+                <strong>InvioLite</strong> | Company Address Line 1, City / State | info@imgera.com | +1 555 000 0000
+            </div>
+        </div>
+    </footer>
+</div>
+
