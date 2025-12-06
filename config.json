@@ -1,0 +1,40 @@
+{
+  "company": {
+    "name": "InvioLite",
+    "logo": "logo.png",
+    "address": {
+      "line1": "Company Address Line 1",
+      "line2": "City / State",
+      "country": ""
+    },
+    "contact": {
+      "email": "info@imgera.com",
+      "phone": "+1 555 000 0000",
+      "website": "imgera.com"
+    }
+  },
+  "invoice": {
+    "defaultNumber": "INV-001",
+    "defaultTaxRate": 20,
+    "currency": "TRY",
+    "dateFormat": "DD.MM.YYYY"
+  },
+  "branding": {
+    "primaryColor": "#ff6600",
+    "headerBarColor": "#ff6600"
+  },
+  "footer": {
+    "enabled": true,
+    "showLogo": true,
+    "showCompanyInfo": true,
+    "showEmail": true,
+    "showPhone": true,
+    "showWebsite": true,
+    "showAddress": true
+  },
+  "template": {
+    "name": "template-5",
+    "displayName": "Classic Professional"
+  }
+}
+

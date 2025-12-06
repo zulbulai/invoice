@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvioLite - Complete Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #FF6600 0%, #ff8533 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .nav {
+            background: #0f172a;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+        
+        .nav li {
+            margin: 0;
+        }
+        
+        .nav a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            transition: background 0.3s;
+        }
+        
+        .nav a:hover {
+            background: #1e293b;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        section {
+            margin-bottom: 60px;
+            scroll-margin-top: 80px;
+        }
+        
+        h2 {
+            color: #FF6600;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #FF6600;
+        }
+        
+        h3 {
+            color: #0f172a;
+            font-size: 1.6em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            color: #374151;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+        }
+        
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #e11d48;
+        }
+        
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        pre code {
+            background: none;
+            color: #e2e8f0;
+            padding: 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #FF6600;
+        }
+        
+        .feature-card h4 {
+            color: #FF6600;
+            margin-top: 0;
+        }
+        
+        .highlight {
+            background: #fff4e6;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #FF6600;
+            margin: 20px 0;
+        }
+        
+        .warning {
+            background: #fef2f2;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #ef4444;
+            margin: 20px 0;
+        }
+        
+        .info {
+            background: #eff6ff;
+            padding: 20px;
+            border-radius: 6px;
+            border-left: 4px solid #3b82f6;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        th {
+            background: #f9fafb;
+            color: #0f172a;
+            font-weight: 600;
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #FF6600;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 2px;
+        }
+        
+        .toc {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 8px;
+        }
+        
+        .toc a {
+            color: #FF6600;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>InvioLite</h1>
+            <p>Professional Invoice Generator - Complete Documentation</p>
+            <p style="font-size: 1em; margin-top: 10px;">Version 2.0</p>
+        </header>
+        
+        <nav class="nav">
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#installation">Installation</a></li>
+                <li><a href="#configuration">Configuration</a></li>
+                <li><a href="#usage">Usage</a></li>
+                <li><a href="#templates">Templates</a></li>
+                <li><a href="#customization">Customization</a></li>
+                <li><a href="#api">API Reference</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <section id="overview">
+                <h2>📖 Overview</h2>
+                
+                <p>InvioLite is a modern, professional invoice generator built with vanilla JavaScript. It allows you to create beautiful invoices, quotes, and proforma invoices with ease. No installation or build process required - it works entirely in your browser!</p>
+                
+                <h3>Key Features</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>📄 Multiple Document Types</h4>
+                        <p>Create invoices, proforma invoices, and quotes with the same professional interface.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💱 Multi-Currency</h4>
+                        <p>Support for TRY, USD, EUR, GBP with proper formatting and symbols.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🌍 Multi-Language</h4>
+                        <p>6 languages: Turkish, English, German, Italian, Bulgarian, Russian.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎨 5 Templates</h4>
+                        <p>Choose from Classic Professional, Stripe Inspired, Commercial, Design, and Physical.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📥 PDF Export</h4>
+                        <p>Generate high-quality PDF files directly in the browser.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💾 Auto-Save</h4>
+                        <p>Automatically saves your work every 2 seconds to browser storage.</p>
+                    </div>
+                </div>
+                
+                <h3>Technology Stack</h3>
+                <ul>
+                    <li><strong>Vanilla JavaScript (ES6+)</strong> - No frameworks required</li>
+                    <li><strong>HTML5</strong> - Semantic markup</li>
+                    <li><strong>CSS3</strong> - Modern styling</li>
+                    <li><strong>html2pdf.js</strong> - PDF generation (CDN-loaded)</li>
+                </ul>
+                
+                <h3>Browser Compatibility</h3>
+                <ul>
+                    <li>✅ Chrome (latest)</li>
+                    <li>✅ Firefox (latest)</li>
+                    <li>✅ Safari (latest)</li>
+                    <li>✅ Edge (latest)</li>
+                </ul>
+            </section>
+            
+            <section id="installation">
+                <h2>c  o  d  e  l   i  s  t   .  c  c</h2>
+                
+                <h3>Quick Start</h3>
+                <ol>
+                    <li>Download or extract the files to your web server or local machine</li>
+                    <li>Open <code>index.html</code> in a modern web browser</li>
+                    <li>Start creating invoices!</li>
+                </ol>
+                
+                <div class="highlight">
+                    <strong>No Installation Required!</strong> InvioLite works entirely in your browser. No build process, no server setup, no dependencies to install.
+                </div>
+                
+                <h3>File Structure</h3>
+                <pre><code>inviolite/
+├── index.html              # Main application file
+├── script.js               # Core application logic
+├── style.css               # Base styles and editor panel
+├── translations.js         # Translation manager
+├── translations.json       # Multi-language strings
+├── config.json             # Configuration file
+├── package.json            # Project metadata
+├── README.md               # Quick start guide
+├── templates/
+│   ├── template-1.css      # Classic Professional template
+│   ├── template-2.css       # Stripe Inspired template
+│   ├── template-3.css       # Commercial template
+│   ├── template-3-commercial.html
+│   ├── template-4.css       # Design template
+│   ├── template-4-design.html
+│   ├── template-5.css       # Physical template
+│   └── template-5-physical.html
+└── logo.png                # Company logo (optional)</code></pre>
+                
+                <h3>Web Server Setup (Optional)</h3>
+                <p>While InvioLite works locally, for best results (especially for PDF generation), use a web server:</p>
+                
+                <h4>Python Server</h4>
+                <pre><code>python3 -m http.server 8000</code></pre>
+                <p>Then open: <code>http://localhost:8000</code></p>
+                
+                <h4>PHP Server</h4>
+                <pre><code>php -S localhost:8000</code></pre>
+                <p>Then open: <code>http://localhost:8000</code></p>
+                
+                <h4>Node.js Server</h4>
+                <pre><code>npx http-server -p 8000</code></pre>
+                <p>Then open: <code>http://localhost:8000</code></p>
+            </section>
+            
+            <section id="configuration">
+                <h2>⚙️ Configuration</h2>
+                
+                <p>All customization is done through the <code>config.json</code> file. This centralized configuration makes it easy to customize your invoice generator.</p>
+                
+                <h3>Configuration Structure</h3>
+                <pre><code>{
+  "company": {
+    "name": "Your Company Name",
+    "logo": "logo.png",
+    "address": {
+      "line1": "Company Address Line 1",
+      "line2": "City / State",
+      "country": ""
+    },
+    "contact": {
+      "email": "info@example.com",
+      "phone": "+1 555 000 0000",
+      "website": "example.com"
+    }
+  },
+  "invoice": {
+    "defaultNumber": "INV-001",
+    "defaultTaxRate": 20,
+    "currency": "TRY",
+    "dateFormat": "DD.MM.YYYY"
+  },
+  "branding": {
+    "primaryColor": "#ff6600",
+    "headerBarColor": "#ff6600"
+  },
+  "footer": {
+    "enabled": true,
+    "showLogo": true,
+    "showCompanyInfo": true,
+    "showEmail": true,
+    "showPhone": true,
+    "showWebsite": true,
+    "showAddress": true
+  },
+  "template": {
+    "name": "template-1",
+    "displayName": "Classic Professional"
+  }
+}</code></pre>
+                
+                <h3>Company Information</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Description</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>company.name</code></td>
+                            <td>Your company name</td>
+                            <td>"Acme Corporation"</td>
+                        </tr>
+                        <tr>
+                            <td><code>company.logo</code></td>
+                            <td>Logo filename (PNG, SVG, or JPG)</td>
+                            <td>"logo.png"</td>
+                        </tr>
+                        <tr>
+                            <td><code>company.address.line1</code></td>
+                            <td>First address line</td>
+                            <td>"123 Business St"</td>
+                        </tr>
+                        <tr>
+                            <td><code>company.address.line2</code></td>
+                            <td>Second address line</td>
+                            <td>"Suite 100, New York"</td>
+                        </tr>
+                        <tr>
+                            <td><code>company.contact.email</code></td>
+                            <td>Contact email</td>
+                            <td>"info@example.com"</td>
+                        </tr>
+                        <tr>
+                            <td><code>company.contact.phone</code></td>
+                            <td>Contact phone</td>
+                            <td>"+1 555 000 0000"</td>
+                        </tr>
+                        <tr>
+                            <td><code>company.contact.website</code></td>
+                            <td>Company website</td>
+                            <td>"example.com"</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Invoice Defaults</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Description</th>
+                            <th>Options</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>invoice.defaultNumber</code></td>
+                            <td>Default invoice number format</td>
+                            <td>"INV-001", "2025-001", etc.</td>
+                        </tr>
+                        <tr>
+                            <td><code>invoice.defaultTaxRate</code></td>
+                            <td>Default tax/VAT rate (%)</td>
+                            <td>0-100</td>
+                        </tr>
+                        <tr>
+                            <td><code>invoice.currency</code></td>
+                            <td>Default currency</td>
+                            <td>"TRY", "USD", "EUR", "GBP"</td>
+                        </tr>
+                        <tr>
+                            <td><code>invoice.dateFormat</code></td>
+                            <td>Date format preference</td>
+                            <td>"DD.MM.YYYY", "MM/DD/YYYY", etc.</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Branding</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Description</th>
+                            <th>Format</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>branding.primaryColor</code></td>
+                            <td>Primary brand color</td>
+                            <td>Hex color: "#ff6600"</td>
+                        </tr>
+                        <tr>
+                            <td><code>branding.headerBarColor</code></td>
+                            <td>Header bar accent color</td>
+                            <td>Hex color: "#ff6600"</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3>Footer Configuration</h3>
+                <p>Control what appears in the invoice footer:</p>
+                <ul>
+                    <li><code>footer.enabled</code> - Enable/disable entire footer</li>
+                    <li><code>footer.showLogo</code> - Show company logo</li>
+                    <li><code>footer.showCompanyInfo</code> - Show company name</li>
+                    <li><code>footer.showEmail</code> - Show email address</li>
+                    <li><code>footer.showPhone</code> - Show phone number</li>
+                    <li><code>footer.showWebsite</code> - Show website</li>
+                    <li><code>footer.showAddress</code> - Show address</li>
+                </ul>
+                
+                <h3>Template Selection</h3>
+                <p>Choose from 5 professional templates:</p>
+                <ul>
+                    <li><code>"template-1"</code> - Classic Professional</li>
+                    <li><code>"template-2"</code> - Stripe Inspired</li>
+                    <li><code>"template-3"</code> - Commercial</li>
+                    <li><code>"template-4"</code> - Design</li>
+                    <li><code>"template-5"</code> - Physical</li>
+                </ul>
+                
+                <div class="info">
+                    <strong>Logo Fallback:</strong> If no logo file is found, the company name will be displayed as styled text automatically.
+                </div>
+            </section>
+            
+            <section id="usage">
+                <h2>📋 Usage Guide</h2>
+                
+                <h3>Creating an Invoice</h3>
+                <ol>
+                    <li><strong>Fill in document details:</strong>
+                        <ul>
+                            <li>Select document type (Invoice, Proforma Invoice, or Quote)</li>
+                            <li>Choose currency (TRY, USD, EUR, GBP)</li>
+                            <li>Enter invoice number</li>
+                            <li>Set issue date and expiry date</li>
+                        </ul>
+                    </li>
+                    <li><strong>Add customer information:</strong>
+                        <ul>
+                            <li>Company/Name</li>
+                            <li>Address</li>
+                            <li>Phone number</li>
+                        </ul>
+                    </li>
+                    <li><strong>Add line items:</strong>
+                        <ul>
+                            <li>Click "+ Add Item" to add products/services</li>
+                            <li>Enter description, quantity, and unit price</li>
+                            <li>Remove items with the "Remove" button</li>
+                        </ul>
+                    </li>
+                    <li><strong>Configure pricing:</strong>
+                        <ul>
+                            <li>Set tax rate (default: 20%)</li>
+                            <li>Add discount (percentage or fixed amount)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Add notes (optional):</strong>
+                        <ul>
+                            <li>Payment terms</li>
+                            <li>Delivery details</li>
+                            <li>Other important information</li>
+                        </ul>
+                    </li>
+                    <li><strong>Export:</strong>
+                        <ul>
+                            <li>Click "Download PDF" to generate PDF</li>
+                            <li>Click "Print" to print directly</li>
+                            <li>Click "Save" to save to browser storage</li>
+                            <li>Click "Export" to download JSON backup</li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <h3>Data Management</h3>
+                
+                <h4>Auto-Save</h4>
+                <p>The application automatically saves your work to browser localStorage every 2 seconds after changes. Your data persists across page reloads.</p>
+                
+                <h4>Manual Save</h4>
+                <p>Click the "Save" button to manually save your current invoice state.</p>
+                
+                <h4>Export Data</h4>
+                <p>Click "Export" to download a JSON backup file containing:</p>
+                <ul>
+                    <li>All line items</li>
+                    <li>Form data (customer info, dates, etc.)</li>
+                    <li>Settings (tax rate, discount)</li>
+                    <li>Timestamp</li>
+                </ul>
+                
+                <h4>Import Data</h4>
+                <p>Click "Import" and select a previously exported JSON file to restore your invoice data.</p>
+                
+                <h3>Language Switching</h3>
+                <p>Use the language selector in the header to switch between available languages:</p>
+                <ul>
+                    <li>🇹🇷 Turkish (Türkçe)</li>
+                    <li>🇬🇧 English</li>
+                    <li>🇩🇪 German (Deutsch)</li>
+                    <li>🇮🇹 Italian (Italiano)</li>
+                    <li>🇧🇬 Bulgarian (Български)</li>
+                    <li>🇷🇺 Russian (Русский)</li>
+                </ul>
+                <p>The selected language is saved and persists across sessions.</p>
+            </section>
+            
+            <section id="templates">
+                <h2>🎨 Templates</h2>
+                
+                <p>InvioLite includes 5 professional invoice templates. Switch between them via <code>config.json</code>.</p>
+                
+                <h3>Template 1: Classic Professional</h3>
+                <ul>
+                    <li><strong>Style:</strong> Traditional business invoice</li>
+                    <li><strong>Features:</strong> Bold orange accent bar, classic typography</li>
+                    <li><strong>Best for:</strong> Professional services, traditional businesses</li>
+                    <li><strong>Files:</strong> <code>templates/template-1.css</code></li>
+                </ul>
+                
+                <h3>Template 2: Stripe Inspired</h3>
+                <ul>
+                    <li><strong>Style:</strong> Clean, modern design</li>
+                    <li><strong>Features:</strong> Gradient header bar, minimal design</li>
+                    <li><strong>Best for:</strong> Tech companies, SaaS businesses</li>
+                    <li><strong>Files:</strong> <code>templates/template-2.css</code></li>
+                </ul>
+                
+                <h3>Template 3: Commercial</h3>
+                <ul>
+                    <li><strong>Style:</strong> Professional B2B invoice</li>
+                    <li><strong>Features:</strong> Blue gradient header, structured layout</li>
+                    <li><strong>Best for:</strong> B2B companies, commercial transactions</li>
+                    <li><strong>Files:</strong> <code>templates/template-3.css</code>, <code>templates/template-3-commercial.html</code></li>
+                </ul>
+                
+                <h3>Template 4: Design</h3>
+                <ul>
+                    <li><strong>Style:</strong> Creative and modern</li>
+                    <li><strong>Features:</strong> Purple gradient header, card-based layout</li>
+                    <li><strong>Best for:</strong> Design agencies, creative businesses</li>
+                    <li><strong>Files:</strong> <code>templates/template-4.css</code>, <code>templates/template-4-design.html</code></li>
+                </ul>
+                
+                <h3>Template 5: Physical</h3>
+                <ul>
+                    <li><strong>Style:</strong> Traditional paper invoice</li>
+                    <li><strong>Features:</strong> Black borders, traditional layout</li>
+                    <li><strong>Best for:</strong> Physical businesses, printed invoices</li>
+                    <li><strong>Files:</strong> <code>templates/template-5.css</code>, <code>templates/template-5-physical.html</code></li>
+                </ul>
+                
+                <h3>Switching Templates</h3>
+                <p>Edit <code>config.json</code> and change the template name:</p>
+                <pre><code>{
+  "template": {
+    "name": "template-2",
+    "displayName": "Stripe Inspired"
+  }
+}</code></pre>
+            </section>
+            
+            <section id="customization">
+                <h2>💡 Customization</h2>
+                
+                <h3>Adding Your Logo</h3>
+                <ol>
+                    <li>Place your logo file in the project root directory</li>
+                    <li>Supported formats: PNG, SVG, JPG</li>
+                    <li>Update <code>config.json</code>:
+                        <pre><code>"logo": "your-logo.png"</code></pre>
+                    </li>
+                    <li>If no logo is found, the company name will display as styled text</li>
+                </ol>
+                
+                <h3>Customizing Colors</h3>
+                <p>Edit <code>config.json</code> to change branding colors:</p>
+                <pre><code>{
+  "branding": {
+    "primaryColor": "#your-color",
+    "headerBarColor": "#your-color"
+  }
+}</code></pre>
+                
+                <h3>Adding Custom Templates</h3>
+                <ol>
+                    <li>Create a new CSS file in <code>templates/</code> directory</li>
+                    <li>Name it: <code>template-X.css</code> (where X is a number)</li>
+                    <li>Copy styles from an existing template and modify</li>
+                    <li>Update <code>config.json</code> to use your template</li>
+                </ol>
+                
+                <h3>Adding New Languages</h3>
+                <ol>
+                    <li>Open <code>translations.json</code></li>
+                    <li>Copy an existing language section</li>
+                    <li>Add a new language code (e.g., "fr" for French)</li>
+                    <li>Translate all strings</li>
+                    <li>Add language option to <code>index.html</code> language selector</li>
+                </ol>
+                
+                <h3>Modifying Invoice Layout</h3>
+                <p>For templates 1 and 2, modify the HTML in <code>index.html</code>. For templates 3, 4, and 5, edit the corresponding HTML files in <code>templates/</code> directory.</p>
+            </section>
+            
+            <section id="api">
+                <h2>🔧 API Reference</h2>
+                
+                <h3>InvoiceGenerator Class</h3>
+                <p>The main application class that handles all invoice operations.</p>
+                
+                <h4>Methods</h4>
+                
+                <h5><code>loadConfig()</code></h5>
+                <p>Loads configuration from <code>config.json</code>.</p>
+                <pre><code>await invoiceGenerator.loadConfig();</code></pre>
+                
+                <h5><code>addItem()</code></h5>
+                <p>Adds a new line item to the invoice.</p>
+                <pre><code>invoiceGenerator.addItem();</code></pre>
+                
+                <h5><code>removeItem(index)</code></h5>
+                <p>Removes a line item at the specified index.</p>
+                <pre><code>invoiceGenerator.removeItem(0);</code></pre>
+                
+                <h5><code>updatePreview()</code></h5>
+                <p>Updates the invoice preview with current data.</p>
+                <pre><code>invoiceGenerator.updatePreview();</code></pre>
+                
+                <h5><code>calculateTotals()</code></h5>
+                <p>Calculates subtotal, tax, discount, and grand total.</p>
+                <pre><code>const totals = invoiceGenerator.calculateTotals();</code></pre>
+                
+                <h5><code>exportPDF()</code></h5>
+                <p>Generates and downloads a PDF of the invoice.</p>
+                <pre><code>await invoiceGenerator.exportPDF();</code></pre>
+                
+                <h5><code>saveToStorage()</code></h5>
+                <p>Saves current invoice data to localStorage.</p>
+                <pre><code>invoiceGenerator.saveToStorage();</code></pre>
+                
+                <h5><code>loadFromStorage()</code></h5>
+                <p>Loads invoice data from localStorage.</p>
+                <pre><code>invoiceGenerator.loadFromStorage();</code></pre>
+                
+                <h5><code>exportData()</code></h5>
+                <p>Exports invoice data as JSON file.</p>
+                <pre><code>invoiceGenerator.exportData();</code></pre>
+                
+                <h5><code>importData(file)</code></h5>
+                <p>Imports invoice data from JSON file.</p>
+                <pre><code>invoiceGenerator.importData(file);</code></pre>
+                
+                <h3>TranslationManager Class</h3>
+                <p>Handles multi-language support.</p>
+                
+                <h4>Methods</h4>
+                
+                <h5><code>loadTranslations()</code></h5>
+                <p>Loads translations from <code>translations.json</code>.</p>
+                <pre><code>await translationManager.loadTranslations();</code></pre>
+                
+                <h5><code>t(key, params)</code></h5>
+                <p>Gets translated string for a key.</p>
+                <pre><code>const text = translationManager.t('ui.save');
+const taxLabel = translationManager.t('invoice.tax', { rate: 20 });</code></pre>
+                
+                <h5><code>setLanguage(lang)</code></h5>
+                <p>Sets the current language.</p>
+                <pre><code>translationManager.setLanguage('en');</code></pre>
+                
+                <h5><code>getCurrentLanguage()</code></h5>
+                <p>Gets the current language code.</p>
+                <pre><code>const lang = translationManager.getCurrentLanguage();</code></pre>
+            </section>
+            
+            <section id="troubleshooting">
+                <h2>🔍 Troubleshooting</h2>
+                
+                <h3>Common Issues</h3>
+                
+                <h4>PDF Export Not Working</h4>
+                <div class="warning">
+                    <strong>Issue:</strong> PDF download fails or generates blank PDF.<br>
+                    <strong>Solutions:</strong>
+                    <ul>
+                        <li>Ensure you're running on a web server (not file://)</li>
+                        <li>Check browser console for errors</li>
+                        <li>Try a different browser</li>
+                        <li>Check if html2pdf.js library loads correctly</li>
+                    </ul>
+                </div>
+                
+                <h4>Logo Not Displaying</h4>
+                <div class="info">
+                    <strong>Issue:</strong> Logo doesn't appear.<br>
+                    <strong>Solutions:</strong>
+                    <ul>
+                        <li>Check file path in <code>config.json</code></li>
+                        <li>Ensure logo file exists in project root</li>
+                        <li>Check file format (PNG, SVG, JPG supported)</li>
+                        <li>Company name will display as fallback if logo missing</li>
+                    </ul>
+                </div>
+                
+                <h4>Data Not Saving</h4>
+                <div class="info">
+                    <strong>Issue:</strong> Invoice data doesn't persist.<br>
+                    <strong>Solutions:</strong>
+                    <ul>
+                        <li>Check browser localStorage is enabled</li>
+                        <li>Clear browser cache and try again</li>
+                        <li>Check browser console for errors</li>
+                        <li>Try manual save button</li>
+                    </ul>
+                </div>
+                
+                <h4>Template Not Loading</h4>
+                <div class="warning">
+                    <strong>Issue:</strong> Template doesn't change or loads incorrectly.<br>
+                    <strong>Solutions:</strong>
+                    <ul>
+                        <li>Check template name in <code>config.json</code></li>
+                        <li>Ensure template CSS file exists</li>
+                        <li>For templates 3, 4, 5, ensure HTML files exist</li>
+                        <li>Check browser console for 404 errors</li>
+                    </ul>
+                </div>
+                
+                <h4>Language Not Switching</h4>
+                <div class="info">
+                    <strong>Issue:</strong> Language doesn't change.<br>
+                    <strong>Solutions:</strong>
+                    <ul>
+                        <li>Check <code>translations.json</code> includes the language</li>
+                        <li>Ensure language option exists in HTML selector</li>
+                        <li>Check browser console for errors</li>
+                        <li>Clear browser cache</li>
+                    </ul>
+                </div>
+                
+                <h3>Browser Console Errors</h3>
+                <p>If you encounter errors, check the browser console (F12) for detailed error messages. Common issues:</p>
+                <ul>
+                    <li><strong>CORS errors:</strong> Run on a web server, not file://</li>
+                    <li><strong>404 errors:</strong> Check file paths are correct</li>
+                    <li><strong>JSON parse errors:</strong> Check <code>config.json</code> syntax</li>
+                    <li><strong>Type errors:</strong> Check JavaScript console for details</li>
+                </ul>
+                
+                <h3>Performance Issues</h3>
+                <ul>
+                    <li><strong>Slow loading:</strong> Check internet connection for CDN resources</li>
+                    <li><strong>Laggy preview:</strong> Reduce number of line items</li>
+                    <li><strong>PDF generation slow:</strong> Normal for large invoices, be patient</li>
+                </ul>
+            </section>
+            
+            <section id="faq">
+                <h2>❓ Frequently Asked Questions</h2>
+                
+                <h3>General</h3>
+                
+                <h4>Do I need a server to run InvioLite?</h4>
+                <p>No, InvioLite works locally in your browser. However, for PDF generation, it's recommended to use a local web server.</p>
+                
+                <h4>Can I use this commercially?</h4>
+                <p>Yes, InvioLite is designed for commercial use. Check your license agreement for specific terms.</p>
+                
+                <h4>Is my data secure?</h4>
+                <p>Yes, all data is stored locally in your browser. No data is sent to any server.</p>
+                
+                <h3>Customization</h3>
+                
+                <h4>Can I modify the code?</h4>
+                <p>Yes, you can modify the code to suit your needs. However, you cannot redistribute or resell the modified code.</p>
+                
+                <h4>How do I add more currencies?</h4>
+                <p>Edit <code>translations.json</code> to add currency translations, and update the currency selector in <code>index.html</code>.</p>
+                
+                <h4>Can I create custom templates?</h4>
+                <p>Yes, create new CSS files in the <code>templates/</code> directory and reference them in <code>config.json</code>.</p>
+                
+                <h3>Technical</h3>
+                
+                <h4>What browsers are supported?</h4>
+                <p>Chrome, Firefox, Safari, and Edge (latest versions).</p>
+                
+                <h4>Does it work on mobile?</h4>
+                <p>Yes, InvioLite is fully responsive and works on mobile devices.</p>
+                
+                <h4>Can I integrate this with my website?</h4>
+                <p>Yes, you can embed InvioLite in your website or integrate it with your existing systems.</p>
+            </section>
+            
+            <section id="support">
+                <h2>🆘 Support</h2>
+                
+                <p>For support, questions, or feature requests:</p>
+                <ul>
+                    <li><strong>Email:</strong> info@imgera.com</li>
+                    <li><strong>Website:</strong> imgera.com</li>
+                </ul>
+                
+                <div class="highlight">
+                    <strong>Before contacting support:</strong>
+                    <ul>
+                        <li>Check this documentation</li>
+                        <li>Review the troubleshooting section</li>
+                        <li>Check browser console for errors</li>
+                        <li>Try clearing browser cache</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p><strong>InvioLite</strong> - Professional Invoice Generator</p>
+            <p>Version 2.0 | Copyright © 2025 InvioLite. All rights reserved.</p>
+            <p style="margin-top: 20px; opacity: 0.8;">Made with ❤️ for businesses worldwide</p>
+        </footer>
+    </div>
+</body>
+</html>
+

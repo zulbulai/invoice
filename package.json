@@ -1,0 +1,37 @@
+{
+  "name": "violite",
+  "version": "2.0.0",
+  "description": "InvioLite - Professional invoice generator with PDF export and data persistence",
+  "main": "index.php",
+  "scripts": {
+    "start": "php -S localhost:8000",
+    "serve": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "invoice",
+    "generator",
+    "pdf",
+    "invoice-generator",
+    "business",
+    "billing",
+    "violite",
+    "inviolite"
+  ],
+  "author": {
+    "name": "InvioLite",
+    "email": "info@imgera.com",
+    "url": "imgera.com"
+  },
+  "license": "PROPRIETARY",
+  "licenseText": "See LICENSE.md for full license terms",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
+

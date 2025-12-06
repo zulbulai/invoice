@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="InvioLite - Profesyonel fatura, teklif ve proforma fatura oluşturucu. PDF export ve veri yedekleme özellikleri ile güçlü fatura yönetimi.">
+    <title>InvioLite - Profesyonel Fatura Oluşturucu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link id="templateStylesheet" rel="stylesheet" href="templates/template-1.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Editor Panel -->
+        <aside class="editor-panel">
+            <header class="editor-header">
+                <h1>InvioLite</h1>
+                <div class="language-switcher">
+                    <label for="languageSelect" style="font-size: 0.75rem; color: var(--text-muted); margin-right: 0.5rem;">🌐</label>
+                    <select id="languageSelect" style="background: var(--bg-app); border: 1px solid var(--border-color); color: var(--text-main); padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem;">
+                        <option value="tr">Türkçe</option>
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                        <option value="it">Italiano</option>
+                        <option value="bg">Български</option>
+                        <option value="ru">Русский</option>
+                    </select>
+                </div>
+            </header>
+
+            <form id="invoiceForm">
+                <!-- Document Settings -->
+                <section class="form-section">
+                    <h2 data-translate="ui.documentDetails">Belge Detayları</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="docType" data-translate="ui.documentType">Belge Tipi</label>
+                            <select id="docType" name="docType" data-translate-aria="aria.selectDocumentType" aria-label="Belge tipi seçin">
+                                <option value="FATURA">Fatura</option>
+                                <option value="PROFORMA FATURA">Proforma Fatura</option>
+                                <option value="TEKLİF">Teklif</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="currency" data-translate="ui.currency">Para Birimi</label>
+                            <select id="currency" name="currency" data-translate-aria="aria.selectCurrency" aria-label="Para birimi seçin">
+                                <option value="TRY">Türk Lirası (₺)</option>
+                                <option value="USD">Amerikan Doları ($)</option>
+                                <option value="EUR">Euro (€)</option>
+                                <option value="GBP">İngiliz Sterlini (£)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="invoiceNumber" data-translate="ui.number">Numara</label>
+                            <input type="text" id="invoiceNumber" name="invoiceNumber" value="FAT-001" data-translate-aria="aria.invoiceNumber" aria-label="Fatura numarası" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="issueDate" data-translate="ui.issueDate">Düzenleme Tarihi</label>
+                            <input type="date" id="issueDate" name="issueDate" data-translate-aria="aria.issueDate" aria-label="Düzenleme tarihi" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiryDate" data-translate="ui.expiryDate">Son Ödeme Tarihi</label>
+                            <input type="date" id="expiryDate" name="expiryDate" data-translate-aria="aria.expiryDate" aria-label="Son ödeme tarihi">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Customer Information -->
+                <section class="form-section">
+                    <h2 data-translate="ui.customer">Sayın</h2>
+                    <div class="form-group">
+                        <label for="customerName" data-translate="ui.companyName">Firma / İsim</label>
+                        <input type="text" id="customerName" name="customerName" data-translate-placeholder="placeholders.customerName" placeholder="Müşteri Firma Ltd. Şti.">
+                    </div>
+                        <div class="form-group">
+                            <label for="customerAddress" data-translate="ui.address">Adres</label>
+                            <textarea id="customerAddress" name="customerAddress" rows="3" data-translate-placeholder="placeholders.customerAddress" placeholder="Örnek Mah. İş Merkezi No:1, İstanbul"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerPhone" data-translate="ui.phone">Telefon</label>
+                            <input type="text" id="customerPhone" name="customerPhone" data-translate-placeholder="placeholders.customerPhone" placeholder="+90 555 555 55 55">
+                        </div>
+                    </section>
+
+                    <!-- Line Items -->
+                    <section class="form-section">
+                        <div class="section-header">
+                            <h2 data-translate="ui.items">Hizmet / Ürünler</h2>
+                            <button type="button" id="addItemBtn" class="btn-secondary" data-translate-aria="aria.addItem" data-translate="ui.addItem" aria-label="Yeni kalem ekle">+ Kalem Ekle</button>
+                        </div>
+                        <div id="itemsContainer">
+                            <!-- Items will be injected here by JS -->
+                        </div>
+                    </section>
+
+                    <!-- Pricing Settings -->
+                    <section class="form-section">
+                        <h2 data-translate="ui.pricing">Fiyatlandırma</h2>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="taxRate" data-translate="ui.taxRate">KDV Oranı (%)</label>
+                                <input type="number" id="taxRate" name="taxRate" min="0" max="100" step="0.1" value="20">
+                            </div>
+                            <div class="form-group">
+                                <label for="discountType" data-translate="ui.discountType">İndirim Tipi</label>
+                                <select id="discountType" name="discountType">
+                                    <option value="percent">Yüzde (%)</option>
+                                    <option value="fixed">Sabit Tutar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="discount" data-translate="ui.discount">İndirim</label>
+                            <input type="number" id="discount" name="discount" min="0" step="0.01" value="0" placeholder="0">
+                        </div>
+                    </section>
+
+                    <!-- Notes -->
+                    <section class="form-section">
+                        <h2 data-translate="ui.notes">Notlar</h2>
+                        <textarea id="notes" name="notes" rows="3" data-translate-placeholder="placeholders.notes" placeholder="Ödeme koşulları, teslimat detayları vb."></textarea>
+                    </section>
+                </form>
+
+                <div class="editor-footer">
+                    <div class="footer-buttons-grid">
+                        <button type="button" id="saveBtn" class="btn-secondary" data-translate-aria="aria.saveInvoice" data-translate="ui.save" aria-label="Faturayı kaydet">Kaydet</button>
+                        <button type="button" id="exportBtn" class="btn-secondary" data-translate-aria="aria.exportData" data-translate="ui.export" aria-label="Verileri dışa aktar">Dışa Aktar</button>
+                    </div>
+                    <input type="file" id="importInput" accept=".json" style="display: none;" data-translate-aria="aria.selectFile" aria-label="Dosya seç">
+                    <div class="footer-buttons-grid">
+                        <button type="button" id="importBtn" class="btn-secondary" data-translate-aria="aria.importData" data-translate="ui.import" aria-label="Verileri içe aktar">İçe Aktar</button>
+                        <button type="button" id="printBtn" class="btn-secondary" data-translate-aria="aria.printInvoice" data-translate="ui.print" aria-label="Faturayı yazdır">Yazdır</button>
+                    </div>
+                    <button type="button" id="pdfBtn" class="btn-primary" data-translate-aria="aria.downloadPdf" data-translate="ui.downloadPdf" aria-label="PDF olarak indir">PDF İndir</button>
+                </div>
+            </aside>
+
+            <!-- Preview Panel -->
+            <main class="preview-panel">
+                <div class="preview-wrapper">
+                    <div id="invoicePreview" class="invoice-paper">
+                        <!-- Header Section -->
+                        <header class="invoice-header">
+                            <div class="brand-col">
+                                <img src="logo.png" alt="InvioLite Logo" class="logo">
+                            </div>
+                            <div class="header-right">
+                                <div class="header-bar"></div>
+                                <div id="previewDate" class="header-date">24.11.2025</div>
+                                <div class="header-note">İşbu teklif, tarihine kadar geçerlidir</div>
+                                <div class="header-meta-row">
+                                    <span id="previewDocTypeDisplay">FATURA</span>
+                                    <span class="meta-separator">|</span>
+                                    <span id="previewNumberDisplay">FAT-001</span>
+                                </div>
+                            </div>
+                        </header>
+
+                        <!-- Info Section -->
+                    <section class="info-total-section">
+                        <div class="info-col-left">
+                            <!-- Company Info -->
+                            <div class="company-info-block">
+                                <div class="company-name">INVIOLITE</div>
+                                <div>Company Address Line 1</div>
+                                <div>City / State</div>
+                                <div>info@imgera.com</div>
+                                <div>+1 555 000 0000</div>
+                            </div>
+                        </div>
+
+                        <div class="info-col-right">
+                            <!-- Customer Info -->
+                            <div class="customer-info-block-right">
+                                <div class="sayin-label" data-translate="invoice.to">SAYIN</div>
+                                <div id="previewCustomerName" class="customer-name-right"></div>
+                                <div id="previewCustomerAddress" class="customer-address-right"></div>
+                                <div id="previewCustomerPhone" class="customer-phone-right"></div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Items Table -->
+                    <section class="invoice-section items-section">
+                        <div class="table-header-row">
+                            <div class="th-desc" data-translate="invoice.serviceProduct">■ HİZMET/ÜRÜN TANIMLARI</div>
+                            <div class="th-price" data-translate="invoice.listPrice">LİSTE FİYATI</div>
+                            <div class="th-qty" data-translate="invoice.quantity">ADET</div>
+                            <div class="th-total" data-translate="invoice.total">TOPLAM</div>
+                        </div>
+                        <div id="previewItemsBody" class="table-body">
+                            <!-- Rows injected here -->
+                        </div>
+                    </section>
+
+                    <!-- Totals -->
+                    <section class="invoice-section totals-section">
+                        <div class="notes-col">
+                            <div id="previewNotes" class="notes-content"></div>
+                        </div>
+                        <div class="totals-col-right">
+                            <table class="totals-table">
+                                <tr>
+                                    <th data-translate="invoice.subtotal">ARA TOPLAM</th>
+                                    <td id="previewSubtotal">₺15.000</td>
+                                </tr>
+                                <tr id="discountRow" style="display: none;">
+                                    <th data-translate="invoice.discount">İNDİRİM</th>
+                                    <td id="previewDiscount">₺0</td>
+                                </tr>
+                                <tr>
+                                    <th id="taxLabel" data-translate="invoice.tax" data-params='{"rate": "20"}'>KDV (20%)</th>
+                                    <td id="previewTax">₺3.000</td>
+                                </tr>
+                                <tr class="grand-total-row">
+                                    <th data-translate="invoice.grandTotal">TOPLAM</th>
+                                    <td id="previewTotal">₺18.000</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Footer -->
+                    <footer class="invoice-footer">
+                        <div class="footer-logo">
+                            <img src="logo.png" alt="InvioLite" class="footer-logo-img">
+                        </div>
+                        <div class="footer-info">
+                            <strong>InvioLite</strong><br>
+                            Company Address Line 1<br>
+                            City / State<br>
+                            info@imgera.com<br>
+                            +1 555 000 0000<br>
+                            imgera.com
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Notification Toast -->
+    <div id="notification" class="notification" role="alert" aria-live="polite"></div>
+    
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
